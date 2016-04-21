@@ -23,12 +23,12 @@ var downloadBinary = function(platform) {
       request.get(latestBinary)
       .pipe(unzip.Extract({ path: localBinPath }))
       .on('close', function() {
-         //fs.chmodSync(localBinPath+'voltos', 0711);
+         fs.chmodSync(localBinPath+'voltos', 0711);
        })
       break;
     case 'linux64':
       extractTarballDownload(latestBinary , localBinPath, function() {
-        //fs.chmodSync(localBinPath+'voltos', 0711);
+        fs.chmodSync(localBinPath+'voltos', 0711);
       })
       break;
     default:
