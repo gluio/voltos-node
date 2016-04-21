@@ -5,7 +5,8 @@
   "repository": "https://github.com/gluio/voltos-node.git",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "scripts/download-binary.js"
   },
   "author": "Glenn Gillen <me@glenngillen.com> (http://glenngillen.com/)",
   "license": "MIT",
@@ -13,5 +14,9 @@
     "request": "2.67.0",
     "tar": "2.2.1",
     "unzip": "0.1.11"
+  },
+  "preferGlobal": true,
+  "bin" : {
+    "voltos": "./bin/voltos"
   }
 }
