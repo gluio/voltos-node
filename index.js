@@ -4,9 +4,8 @@ const apiRequestOpts = { strictSSL: false, json: true }
 
 var api = {
   headers: { 'User-Agent': 'voltos-node' },
-
   options: function(opts) {
-    return Object.assign({}, apiRequestOpts, opts, headers: this.headers)
+    return Object.assign({}, apiRequestOpts, opts, { headers: this.headers })
   },
   signup: function(email, password, tokenName, callback) {
     var url = API_URL + '/account'
