@@ -1,6 +1,6 @@
 {
   "name": "voltos",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "API wrapper for using Voltos to manage secrets",
   "repository": "https://github.com/gluio/voltos-node.git",
   "main": "index.js",
