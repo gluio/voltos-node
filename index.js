@@ -7,6 +7,10 @@ var api = {
   options: function(opts) {
     return Object.assign({}, apiRequestOpts, opts, { headers: this.headers })
   },
+  whaami: function(token, callback) {
+    var url = API_URL + '/account'
+    request.get(this.options({ url: url, auth: this.tokenAuth(token) }), callback)
+  },
   signup: function(email, password, tokenName, callback) {
     var url = API_URL + '/account'
     var data = {
