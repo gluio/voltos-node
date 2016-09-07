@@ -37,6 +37,11 @@ var api = {
     var url = API_URL + '/bundles/' + name
     request.delete(this.options({ url: url, auth: this.tokenAuth(token) }), callback)
   },
+  // GET /bundles
+  bundles: function(token, callback) {
+    var url = API_URL + '/bundles'
+    request.get(this.options({ url: url, auth: this.tokenAuth(token) }), callback)
+  },
   // POST /bundles/:name/token
   bundleToken: function(name, tokenName, token, callback) {
     var url = API_URL + '/bundles/' + name + '/token'
@@ -55,7 +60,7 @@ var api = {
   },
   // GET /bundles/:list || GET /credentials
   list: function(name, token, callback) {
-    var url = API_URL + '/credentials/' + name
+    var url = API_URL + '/bundles/' + name
     request.get(this.options({ url: url, auth: this.tokenAuth(token) }), callback)
   },
   // POST /credentials
