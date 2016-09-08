@@ -20,8 +20,9 @@ var api = {
     request.post(this.options({ url: url, form: data }), callback)
   },
   // POST /account/token
-  userToken: function(email, password, callback) {
+  userToken: function(email, password, tokenName, callback) {
     var url = API_URL + '/account/token'
+    var data = { name: tokenName }
     request.post(this.options({ url: url, auth: this.basicAuth(email, password) }), callback)
   },
   // POST /bundles
