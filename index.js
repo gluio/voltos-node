@@ -59,9 +59,14 @@ var api = {
     }
     request.put(this.options({ url: url, form: data, auth: this.tokenAuth(token) }), callback)
   },
-  // GET /bundles/:list || GET /credentials
+  // GET /bundles/:list
   list: function(name, token, callback) {
     var url = API_URL + '/bundles/' + name
+    request.get(this.options({ url: url, auth: this.tokenAuth(token) }), callback)
+  },
+  // GET /credentials
+  credentials: function(token, callback) {
+    var url = API_URL + '/credentials'
     request.get(this.options({ url: url, auth: this.tokenAuth(token) }), callback)
   },
   // POST /credentials
@@ -109,6 +114,18 @@ var api = {
   tokenAuth: function(token) {
     return { bearer: 'token="' + token + '"' }
   },
+}
+
+if (process.env.VOLTOS_KEY) {
+  api.credentials(process.env.VOLTOS_KEY, function(err, httpResponse, body) {
+    if (httpResponse.statusCode == 200) {
+      for(var key in body){
+        if (typeof process.env[key] === 'undefined') {
+          process.env[key] = body[key]
+        }
+      }
+    }
+  })
 }
 
 var voltos = {
