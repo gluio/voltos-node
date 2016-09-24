@@ -61,25 +61,21 @@ line to:
   p Welcome to #{process.env.SITE_NAME}
 ```
 
-Update `package.json` to list `voltos` as a dependency, and update the `start` script
-to use `voltos` to start your app:
+Update `package.json` to list `voltos` as a dependency:
 
 ```json
   "dependencies": {
-    "voltos": "^0.0.10"
-  },
-  "scripts": {
-    "start": "voltos run node app.js"
-  },
+    "voltos": "^0.0.14"
+  }
 ```
 
-Install the dependencies locally to ensure we've got the `voltos CLI` installed:
+Update `app.js`  and require `voltos` at the very top of the file:
 
-```
-$ npm install
+```javascript
+require('voltos')
 ```
 
-And then create a new bundle for this app:
+Now create a new bundle for this app:
 
 ```
 $ voltos create
