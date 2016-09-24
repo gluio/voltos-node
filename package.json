@@ -5,7 +5,7 @@
   "repository": "https://github.com/gluio/voltos-node.git",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Glenn Gillen <me@glenngillen.com> (http://glenngillen.com/)",
   "license": "MIT",
