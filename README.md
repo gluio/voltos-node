@@ -104,6 +104,6 @@ Now save and deploy your changes:
 
 ```
 $ git commit -am "Update app to use voltos."
-$ git push azure master
+$ git push azure master 
 ```
 
