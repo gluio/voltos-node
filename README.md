@@ -1,39 +1,16 @@
-# Voltos
+# Voltos Node bindings
+
+This provides Voltos Node.js bindings to access the Voltos API from apps written in Node.js. Voltos ([https://voltos.io](https://voltos.io)) provides credentials-as-a-service for app and system developers.
+
+Voltos stores your credentials (e.g. API keys, usernames, passwords, tokens) in a secure, central location - so that your apps can access them securely as environment variables, and you can more easily manage & access them. 
+
+## Contents
+* [Installation](#installation)
+* [Using Voltos](#using-voltos)
+* [Deploying to Azure](#deploying-to-azure)
+* [Contributing](#contributing)
 
 ## Installation
-
-## Usage
-
-### Azure Hello World
-
-Before you start, you'll need the [Azure CLI](https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-install/)
-installed. Then make sure the config mode is to ASM and login:
-
-```
-$ azure config mode asm
-$ azure login
-```
-
-Open the command-line terminal of your choice and install the
-[Express generator for Yeoman](https://github.com/petecoop/generator-express),
-and create a new Node.js app:
-
-```
-$ npm install -g yo generator-express
-$ yo express
-? Would you like to create a new directory for your project? Yes
-? Enter directory name voltos-hello-world
-? Select a version to install: MVC
-? Select a view engine to use: Jade
-? Select a css preprocessor to use (Sass Requires Ruby): None
-? Select a database to use: None
-? Select a build tool to use: Grunt
-```
-
-```
-$ cd voltos-hello-world
-$ azure site create --git
-```
 
 Edit `package.json` to specify a node version:
 
@@ -43,25 +20,7 @@ Edit `package.json` to specify a node version:
   }
 ```
 
-Save and commit your changes, and then deploy your app:
-
-```
-$ git add .
-$ git commit -m "Deploying new app to Azure."
-$ git push azure master
-```
-
-#### Updating to use voltos
-
-Edit `app/views/index.jade` to display some configurable output by changing the last
-line to:
-
-
-```jade
-  p Welcome to #{process.env.SITE_NAME}
-```
-
-Update `package.json` to list `voltos` as a dependency:
+Also list `voltos` as a dependency:
 
 ```json
   "dependencies": {
@@ -69,41 +28,49 @@ Update `package.json` to list `voltos` as a dependency:
   }
 ```
 
+And then execute:
+
+    $ npm install
+
 Update `app.js`  and require `voltos` at the very top of the file:
 
 ```javascript
-require('voltos')
+require('voltos');
 ```
 
-Now create a new bundle for this app:
+Your Voltos keys should be available to your Node.js app via `process.ENV`.
 
-```
-$ voltos create
-```
 
-Set the site name:
+## Using Voltos
+Using Voltos to manage your credentials and secrets is generally the same across all platforms. Check out the general docs at:
 
-```
-$ voltos set SITE_NAME="Hello world"
-```
+* [Getting started](https://github.com/gluio/voltos-docs/blob/master/README.md#getting-started)
+* [Using Voltos with your apps](https://github.com/gluio/voltos-docs/blob/master/README.md#using-voltos-with-your-apps)
 
-And then add a token for this bundle to the config of your Azure site:
 
-```
-$ % voltos token
-Fetching token... ⣻
+## Deploying to Azure
+Ensure the [Installation](#installation) code updates are completed and pushed to your Azure app.
 
-New API token for 'voltos-node-hello-world' is: cbad7be5112287c39dad41c643761a84
-Please store this securely, this is the only time it will be displayed and it can not be retrieved again
-(though you can request a new one)
+Manually retrieve the API token for the selected bundle
 
-$ azure site config add VOLTOS_KEY=cbad7be5112287c39dad41c643761a84
-```
+    $ voltos use your-voltos-bundle
+    Setting current bundle in use to 'your-voltos-bundle'... ⣻
 
-Now save and deploy your changes:
+    $ voltos token
+    Fetching token... ⣻
 
-```
-$ git commit -am "Update app to use voltos."
-$ git push azure master 
-```
+    New API token for 'your-voltos-bundle' is: cbff7be5112287c39dad41c643761a84
+    Please store this securely, this is the only time it will be displayed and it can not be retrieved again
+    (though you can request a new one)
 
+Then add the API token to the Azure config variables for your app:
+
+    $ azure site config add VOLTOS_KEY=cbff7be5112287c39dad41c643761a84
+
+On startup, `voltos` will securely retrieve your bundle's credentials and make them available to your app.
+
+Anytime you need to update your credentials: do so via the CLI or web app, `azure site restart` your app, and the updated credentials are loaded up to your app again.
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/gluio/voltos-node
