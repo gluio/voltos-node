@@ -117,15 +117,20 @@ var api = {
 }
 
 if (process.env.VOLTOS_KEY) {
+  console.log("Fetching credentials from Voltos... ")
+  var done = false;
   api.credentials(process.env.VOLTOS_KEY, function(err, httpResponse, body) {
     if (httpResponse.statusCode == 200) {
+      console.log("Running process with environment sourced from bundle...")
       for(var key in body){
         if (typeof process.env[key] === 'undefined') {
           process.env[key] = body[key]
         }
       }
     }
+    done = true
   })
+  require('deasync').loopWhile(function(){return !done;})
 }
 
 var voltos = {

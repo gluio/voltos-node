@@ -65,7 +65,7 @@ Update `package.json` to list `voltos` as a dependency:
 
 ```json
   "dependencies": {
-    "voltos": "^0.0.14"
+    "voltos": "^0.0.15"
   }
 ```
 
