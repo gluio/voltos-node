@@ -1,4 +1,4 @@
-# Voltos Node bindings
+# Voltos Node.js bindings
 
 This provides Voltos Node.js bindings to access the Voltos API from apps written in Node.js. Voltos ([https://voltos.io](https://voltos.io)) provides credentials-as-a-service for app and system developers.
 
