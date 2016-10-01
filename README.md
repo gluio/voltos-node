@@ -24,7 +24,7 @@ Then update `app.js`  and require `voltos` at the very top of the file:
 require('voltos');
 ```
 
-Your Voltos keys should be available to your Node.js app via `process.ENV`.
+Your Voltos keys should be available to your Node.js app via `process.ENV`
 
 
 ## Using Voltos
