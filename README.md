@@ -12,27 +12,13 @@ Voltos stores your credentials (e.g. API keys, usernames, passwords, tokens) in 
 
 ## Installation
 
-Edit `package.json` to specify a node version:
+Add `voltos` package by executing:
 
-```json
-  "engines": {
-    "node": "6.6.0"
-  }
-```
+    $ npm install voltos --save
 
-Also list `voltos` as a dependency:
+Your `package.json` will be updated.
 
-```json
-  "dependencies": {
-    "voltos": "^0.0.15"
-  }
-```
-
-And then execute:
-
-    $ npm install
-
-Update `app.js`  and require `voltos` at the very top of the file:
+Then update `app.js`  and require `voltos` at the very top of the file:
 
 ```javascript
 require('voltos');
