@@ -1,6 +1,6 @@
 var request = require('request')
 var API_URL = 'https://api.voltos.io/v1'
-const apiRequestOpts = { strictSSL: false, json: true }
+const apiRequestOpts = { strictSSL: true, json: true }
 
 var api = {
   headers: { 'User-Agent': 'voltos-node' },
