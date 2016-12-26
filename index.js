@@ -1,9 +1,10 @@
 var request = require('request')
+var pkg = require('./package.json');
 var API_URL = 'https://api.voltos.io/v1'
 const apiRequestOpts = { strictSSL: true, json: true }
 
 var api = {
-  headers: { 'User-Agent': 'voltos-node' },
+  headers: { 'User-Agent': 'Voltos-node/' + pkg.version },
   options: function(opts) {
     return Object.assign({}, apiRequestOpts, opts, { headers: this.headers })
   },
@@ -134,6 +135,7 @@ if (process.env.VOLTOS_KEY) {
 }
 
 var voltos = {
-  api: api
+  api: api,
+  version: pkg.version
 }
 module.exports = voltos
