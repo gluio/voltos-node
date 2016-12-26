@@ -1,5 +1,5 @@
 var request = require('request')
-var API_URL = 'https://voltos.io/v1'
+var API_URL = 'https://api.voltos.io/v1'
 const apiRequestOpts = { strictSSL: false, json: true }
 
 var api = {
