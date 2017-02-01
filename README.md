@@ -1,8 +1,8 @@
 # Voltos Node.js bindings
 
-This provides Voltos Node.js bindings to access the Voltos API from apps written in Node.js. Voltos ([https://voltos.io](https://voltos.io)) provides credentials-as-a-service for app and system developers.
+This provides Voltos Node.js bindings to access the Voltos API from apps written in Node.js. [Voltos](https://voltos.io/) provides credentials-as-a-service for app and system developers.
 
-Voltos stores your credentials (e.g. API keys, usernames, passwords, tokens) in a secure, central location - so that your apps can access them securely as environment variables, and you can more easily manage & access them. 
+Voltos stores your credentials (e.g. API keys, usernames, passwords, tokens) in a secure, central location - so that your apps can access them securely as environment variables, and you can more easily manage & access them.
 
 ## Contents
 * [Installation](#installation)
